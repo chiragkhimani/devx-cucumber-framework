@@ -1,0 +1,32 @@
+
+Runner Class 
+- It's a class where we give configuration to which feature file & scenario we want to run based on 
+Cucumber Tags  
+
+Runner class Configuration 
+
+1) Features - path to feature file / folder
+2) Tags	- cucumber tags
+3) Glue - step def package
+
+
+Hooks? 
+-> Steps we need to execute before or after each scenario from all cucumber scenarios - @Before & @After 
+
+Background Keyword?
+Common steps we're performing before each scenario in the same feature file
+
+Hooks - for all the scenarios, Background keyword - Specific to the feature file
+
+Scenario Outline? - it's a way to achieve data driven testing with Cucumber
+
+Data Driven Testing? - Same scenario we're executing for multiple data
+
+
+
+
+
+
+
+
+
