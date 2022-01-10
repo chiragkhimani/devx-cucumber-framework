@@ -8,17 +8,17 @@ public class StepDefinition {
 
     @Then("user opens website")
     public void openWebSite() {
-        System.out.println("Opening website");
+
     }
 
     @When("user is on login page")
     public void verifyLoginPage() {
-        System.out.println("On login page");
+
     }
 
     @When("user enters username {string} and password {string}")
-    public void doLogin(String string, String string2) {
-        System.out.println("logging in");
+    public void doLogin(String username, String password) {
+        System.out.println(username + "   "+ password);
     }
 
     @When("click on login button")

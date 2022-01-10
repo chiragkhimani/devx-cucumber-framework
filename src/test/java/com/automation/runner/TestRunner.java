@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src//test//resources//features",
         glue = "com.automation.stepdef",
-        tags = "@Smoke and @Fahad"
+        tags = "@datadriven"
 )
 public class TestRunner {
 
