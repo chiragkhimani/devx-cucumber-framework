@@ -1,0 +1,125 @@
+================================================================
+                    Basics Of Cucumber
+================================================================
+
+Cucumber ?
+
+- Behaviour driven development tool
+- Easy to write test cases / scenario & easy to understand by business user / product owner / any non-technical person
+
+Gherkin language ?
+
+- It's a format to write business requirement where requirement can be specified in simple english language with
+different keyword
+
+Given   - Precondition
+When    - Action
+Then    - Result of action / validation / outcome
+And     - To combine two given or two when or two then we use And instead of repeating different keyword
+
+
+Feature file
+    - file has extension .feature
+    - It contains different scenarios to test specific feature
+
+Scenario
+    - It's a test case
+    - It's a workflow that use can perform in the website
+
+Login.feature
+        @TagName
+    	Scenario: Verify login successful (Test Case)
+    		Given user open website (Test Step)
+    		When user do login	(Test Step)
+    		Then verify login successful (Test Step)
+    		And user is on homepage (Test Step)
+
+Test Step --- > Test Case (collection of test steps) --> Test Suite (collection of test cases)
+
+Step definition
+    - It connects or maps cucumber steps with java function
+    - We're using annotation @Given, @When, @Then, @And to map cucumber step with java function
+    - We cannot create two java function for single cucumber step
+
+================================================================
+                    Feature OF Cucumber
+================================================================
+
+Cucumber Hooks
+    - @Before - It'll get executed before each scenario  (Set up)
+    - @After - It'll get executed after each scenario (Clean up)
+
+Background Keyword
+    - Background in Cucumber is used to define a step or series of steps
+      that are common to all the scenario in the feature file
+
+      Difference between Cucumber Hooks & Background keyword
+        - Hooks will get executed before & after all the scenarios we've in our project
+        - Background is specific to feature file, background steps will get executed before each scenario
+        in specific feature where we've background keyword
+
+Cucumber Tags
+        - It's a group we specify for each scenario & it's same a group in testng
+        - If we have many scenarios in the feature file, to keep them in one group,
+        we use tags in Cucumber, through which we will be able to prepare reports for specific scenarios under the same tag.
+
+Runner Class
+        - Runner classes are used for running test scenarios.
+        - The Runner that should be used to run a scenarios can be set using the @RunWith annotation.
+        - We can specify different configuration to run specific groups of scenarios
+
+        Annotation Used in Runner class
+        - @RunWith(Cucumber.class) - It's a Junit annotation that will take argument like how you want to run this class
+        - @CucumberOptions  - Used to provide different configuration like what feature file / scenarios we want to run
+
+        @CucumberOptions Configuration
+         1. Feature -  path of your feature files / folder
+         2. Glue    -  package where you've implemented your step definition
+         3. Tags    -  tags you want to filter your scenarios (@smoke, @regression)
+         4. dryRun  -  it'll just check all steps in feature file has step definition or not
+         5. Plugin  -  Provide configuration which format we want for reports
+
+================================================================
+    Passing parameters from feature file / data driven testing
+================================================================
+
+1. Passing Data from Cucumber Step
+
+        @TagName
+        	Scenario: Verify login successful (Test Case)
+        		Given user open website (Test Step)
+        		When user login with username "ABC" and password "XYZ"
+        		Then verify login successful (Test Step)
+        		And user is on homepage (Test Step)
+        		And search with keyword "TV"
+
+2. Data Driven Test
+
+     @TagName
+     	Scenario Outline: Verify login successful (Test Case)
+     		Given user open website (Test Step)
+     		When user login with username "<username>" and password "<password>"
+     		Then verify login successful (Test Step)
+     		And user is on homepage (Test Step)
+
+     	Examples:
+     		|username   |password|
+     		|ABC	    |XYZ	|
+     		|MNY	    |OPQ	|
+     		|CDE	    |FGH	|
+
+3. Passing as a data table
+
+         @TagName
+             	Scenario: Verify login successful (Test Case)
+             		Given user open website (Test Step)
+             		When user login with valid username and password
+             			|ABC	    |XYZ	|
+                        |MNY	    |OPQ	|
+                        |CDE	    |FGH	|
+             		Then verify login successful (Test Step)
+             		And user is on homepage (Test Step)
+
+
+
+
